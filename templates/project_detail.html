@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="project-detail">
+        <a href="/projects" class="back-link">← 返回项目列表</a>
+
+        <h1>{{ project.title }}</h1>
+        <div class="project-tags" style="margin-bottom:24px">
+            {% for tag in project.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+
+        <!-- 项目介绍 -->
+        <div class="detail-section">
+            <h2>项目介绍</h2>
+            <p>{{ project.summary }}</p>
+        </div>
+
+        <!-- 功能列表 -->
+        <div class="detail-section">
+            <h2>功能</h2>
+            <ul class="detail-features">
+                {% for feature in project.features %}
+                <li>{{ feature }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- 技术架构 -->
+        <div class="detail-section">
+            <h2>技术架构</h2>
+            <div class="arch-diagram">
+                {% for layer_name, layer_value in project.architecture.items %}
+                <div class="arch-layer">
+                    <span class="label">{{ layer_name|title }}</span>
+                    <span class="value">{{ layer_value }}</span>
+                </div>
+                {% if not loop.last %}
+                <div class="arch-arrow">↓</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- 我的工作 -->
+        <div class="detail-section">
+            <h2>我的工作</h2>
+            <ul class="detail-work">
+                {% for work in project.my_work %}
+                <li>{{ work }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- 展示按钮 -->
+        <div class="detail-buttons">
+            <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline">GitHub →</a>
+            {% if project.demo_url %}
+            <a href="{{ project.demo_url }}" target="_blank" class="btn btn-primary">Online Demo →</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

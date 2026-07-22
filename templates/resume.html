@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="resume-page">
+        <!-- 头部 -->
+        <div class="resume-header">
+            <div>
+                <h1>{{ personal.name }}</h1>
+                <p style="color:var(--accent);font-size:1.05rem;margin-bottom:4px">{{ personal.title }}</p>
+                <p style="color:var(--text-muted);font-size:0.9rem">{{ personal.email }} · {{ personal.github }}</p>
+            </div>
+        </div>
+
+        <!-- 求职目标 -->
+        <div class="resume-section">
+            <h2>About</h2>
+            <p style="color:var(--text-secondary);line-height:1.8">{{ about.intro }} {{ about.extra }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">
+                {% for area in about.focus_areas %}
+                <span class="tag">{{ area }}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- 教育经历 -->
+        <div class="resume-section">
+            <h2>Education</h2>
+            {% for edu in education %}
+            <div style="display:flex;justify-content:space-between;align-items:baseline;{% if not loop.last %}margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border){% endif %}">
+                <div>
+                    <p style="font-weight:600">{{ edu.major }}</p>
+                    <p style="color:var(--text-secondary);font-size:0.9rem">{{ edu.level }}</p>
+                </div>
+                <p style="color:var(--text-muted);font-size:0.85rem;white-space:nowrap">{{ edu.period }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- 技术能力 -->
+        <div class="resume-section">
+            <h2>Skills</h2>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                {% for group in skills %}
+                <div class="resume-skill-group">
+                    <h3>{{ group.name }}</h3>
+                    <div class="tags">
+                        {% for skill in group.skills %}
+                        <span class="tag">{{ skill.name }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- 项目经历 -->
+        <div class="resume-section">
+            <h2>Projects</h2>
+            {% for project in projects %}
+            <div class="resume-project-item">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+                    <h3>{{ project.title }}</h3>
+                    <span style="color:var(--accent);font-size:0.8rem">{{ project.category }}</span>
+                </div>
+                <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px">
+                    {% for tag in project.tags %}
+                    <span class="tag" style="font-size:0.75rem;padding:2px 8px">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                <p class="summary">{{ project.summary }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- 竞赛荣誉 -->
+        <div class="resume-section">
+            <h2>Awards</h2>
+            {% for comp in competitions %}
+            <div class="resume-competition-item">
+                <span>{{ comp.title }}{% if comp.subtitle %} — {{ comp.subtitle }}{% endif %}</span>
+                <span class="award">{{ comp.award }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

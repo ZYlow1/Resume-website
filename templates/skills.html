@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load portfolio_extras %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Skills</h1>
+        <p>技术能力</p>
+    </div>
+
+    <div class="skills-grid">
+        {% for category in categories %}
+        <div class="skill-category">
+            <h3>{{ category.name }}</h3>
+            {% for skill in category.skills %}
+            <div class="skill-item">
+                <span class="skill-name">{{ skill.name }}</span>
+                <span class="skill-stars">{{ skill.level|star_range|safe }}</span>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

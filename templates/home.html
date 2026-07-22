@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+    <!-- 终端窗口 -->
+    <div class="terminal">
+        <div class="terminal-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-title">terminal — zhangyile@portfolio</span>
+        </div>
+        <div class="terminal-body">
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-command">whoami</span>
+            </div>
+            <div class="terminal-output">{{ personal.name }}</div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-command">skills</span>
+            </div>
+            <div class="terminal-output">
+                {% for tag in tech_tags %}{{ tag }} {% endfor %}
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-command">status</span>
+            </div>
+            <div class="terminal-output">{{ personal.status }}</div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-cursor"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 标题 -->
+    <h1 class="hero-title">你好，我是{{ personal.name }}</h1>
+    <p class="hero-subtitle">{{ personal.subtitle }}</p>
+    <p class="hero-subtitle">{{ personal.description }}</p>
+    <p class="hero-tagline">{{ personal.hero_tagline }}</p>
+
+    <!-- 按钮 -->
+    <div class="hero-buttons">
+        <a href="/projects" class="btn btn-primary">查看项目 →</a>
+        <a href="/resume" class="btn btn-outline">下载简历</a>
+    </div>
+
+    <!-- 技术标签 -->
+    <div class="tag-cloud">
+        {% for tag in tech_tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

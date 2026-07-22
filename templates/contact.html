@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="contact-page">
+        <div class="page-header">
+            <h1>Contact</h1>
+            <p>联系方式</p>
+        </div>
+
+        <div class="contact-links">
+            <a href="mailto:{{ contact.email }}" class="contact-item">
+                <span class="icon">✉</span>
+                <div>
+                    <span class="label">Email</span>
+                    <span class="value">{{ contact.email }}</span>
+                </div>
+            </a>
+            <a href="{{ contact.github }}" target="_blank" class="contact-item">
+                <span class="icon">⌨</span>
+                <div>
+                    <span class="label">GitHub</span>
+                    <span class="value">github.com/ZYlow1</span>
+                </div>
+            </a>
+            <a href="tel:18957760819" class="contact-item">
+                <span class="icon">📞</span>
+                <div>
+                    <span class="label">Phone</span>
+                    <span class="value">18957760819</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

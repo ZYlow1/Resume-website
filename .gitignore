@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Django
+db.sqlite3
+
+# IDE
+.idea/
+.vscode/
+.claude/
+
+# Reasonix
+.reasonix/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Attachments
+.reasonix/attachments/

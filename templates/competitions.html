@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>Competition &amp; Awards</h1>
+        <p>竞赛与荣誉</p>
+    </div>
+
+    <div class="competitions-grid">
+        {% for comp in competitions %}
+        <div class="competition-card">
+            <span class="award-badge">{{ comp.award }}</span>
+            <h3>{{ comp.title }}</h3>
+            <p class="subtitle">{{ comp.subtitle }}</p>
+            {% if comp.direction %}
+            <p class="direction">方向：{{ comp.direction }}</p>
+            {% endif %}
+            <div class="skills-row">
+                <div class="skills">
+                    {% for skill in comp.skills_displayed %}
+                    <span>{{ skill }}</span>
+                    {% endfor %}
+                </div>
+                <!-- 查看证书按钮 -->
+                <div class="cert-section">
+                    <button class="cert-btn" onclick="openCert('{% static comp.cert %}')">📄 查看证书</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 证书放大弹窗 -->
+<div id="cert-modal" class="cert-modal" onclick="closeCert()">
+    <span class="cert-close">&times;</span>
+    <img class="cert-modal-content" id="cert-modal-img">
+</div>
+
+<script>
+function openCert(src) {
+    document.getElementById('cert-modal').style.display = 'flex';
+    document.getElementById('cert-modal-img').src = src;
+    document.body.style.overflow = 'hidden';
+}
+function closeCert() {
+    document.getElementById('cert-modal').style.display = 'none';
+    document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeCert();
+});
+</script>
+{% endblock %}

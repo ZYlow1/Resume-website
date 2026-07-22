@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ personal.name }} | {{ personal.title }}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <ul class="nav-links">
+                <li><a href="/" class="{% if active == 'home' %}active{% endif %}">Home</a></li>
+                <li><a href="/about" class="{% if active == 'about' %}active{% endif %}">About</a></li>
+                <li><a href="/skills" class="{% if active == 'skills' %}active{% endif %}">Skills</a></li>
+                <li><a href="/projects" class="{% if active == 'projects' %}active{% endif %}">Projects</a></li>
+                <li><a href="/competitions" class="{% if active == 'competitions' %}active{% endif %}">Competitions</a></li>
+                <li><a href="/resume" class="{% if active == 'resume' %}active{% endif %}">Resume</a></li>
+                <li><a href="/contact" class="{% if active == 'contact' %}active{% endif %}">Contact</a></li>
+            </ul>
+            <button class="menu-toggle" aria-label="菜单">☰</button>
+        </div>
+    </nav>
+
+    <!-- 页面内容 -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; {{ personal.name }} | Built with Python &amp; Django</p>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.querySelector('.menu-toggle')?.addEventListener('click', function() {
+            document.querySelector('.nav-links')?.classList.toggle('show');
+        });
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
