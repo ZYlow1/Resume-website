@@ -46,4 +46,4 @@ python manage.py runserver
 
 ## 许可证
 
-MIT
+GPL
