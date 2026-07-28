@@ -1,57 +1,47 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<section class="hero">
-    <!-- 终端窗口 -->
-    <div class="terminal">
-        <div class="terminal-header">
-            <span class="terminal-dot red"></span>
-            <span class="terminal-dot yellow"></span>
-            <span class="terminal-dot green"></span>
-            <span class="terminal-title">terminal — zhangyile@portfolio</span>
+<!-- 背景装饰层 -->
+<div class="hero-bg"></div>
+<div class="hero-grid"></div>
+<div class="hero-glow"></div>
+
+<!-- 品牌标识（导航栏下方左上角） -->
+<div class="brand-top">
+    <span class="brand-icon">⟨⟩</span>
+    <span class="brand-text">Code &amp; Development</span>
+</div>
+
+<!-- 首页英雄区 -->
+<section class="home-hero">
+    <!-- 左侧：内容 -->
+    <div class="hero-left">
+        <div class="hero-main">
+            <h1 class="hero-title">你好，我是{{ personal.name }}</h1>
+            <h2 class="hero-subtitle">{{ personal.subtitle }}</h2>
+            <p class="hero-desc">{{ personal.description }}</p>
+            <p class="hero-en">{{ personal.hero_tagline }}</p>
         </div>
-        <div class="terminal-body">
-            <div class="terminal-line">
-                <span class="terminal-prompt">$</span>
-                <span class="terminal-command">whoami</span>
-            </div>
-            <div class="terminal-output">{{ personal.name }}</div>
-            <div class="terminal-line">
-                <span class="terminal-prompt">$</span>
-                <span class="terminal-command">skills</span>
-            </div>
-            <div class="terminal-output">
-                {% for tag in tech_tags %}{{ tag }} {% endfor %}
-            </div>
-            <div class="terminal-line">
-                <span class="terminal-prompt">$</span>
-                <span class="terminal-command">status</span>
-            </div>
-            <div class="terminal-output">{{ personal.status }}</div>
-            <div class="terminal-line">
-                <span class="terminal-prompt">$</span>
-                <span class="terminal-cursor"></span>
-            </div>
+
+        <div class="hero-buttons">
+            <a href="/projects" class="btn-primary-glass">查看项目</a>
+            <a href="/resume" class="btn-outline-glass">下载简历</a>
+        </div>
+
+        <div class="hero-intro-line">
+            I'm {{ personal.name_en }}, a computer science student looking for internship opportunities.
         </div>
     </div>
 
-    <!-- 标题 -->
-    <h1 class="hero-title">你好，我是{{ personal.name }}</h1>
-    <p class="hero-subtitle">{{ personal.subtitle }}</p>
-    <p class="hero-subtitle">{{ personal.description }}</p>
-    <p class="hero-tagline">{{ personal.hero_tagline }}</p>
-
-    <!-- 按钮 -->
-    <div class="hero-buttons">
-        <a href="/projects" class="btn btn-primary">查看项目 →</a>
-        <a href="/resume" class="btn btn-outline">下载简历</a>
-    </div>
-
-    <!-- 技术标签 -->
-    <div class="tag-cloud">
-        {% for tag in tech_tags %}
-        <span class="tag">{{ tag }}</span>
-        {% endfor %}
+    <!-- 右侧：技术标签云 -->
+    <div class="hero-right">
+        <div class="tech-tag-cloud">
+            {% for tag in tech_tags %}
+            <span class="tech-tag" style="--i: {{ forloop.counter0 }}">{{ tag }}</span>
+            {% endfor %}
+        </div>
     </div>
 </section>
+
 {% endblock %}

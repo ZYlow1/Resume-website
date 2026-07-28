@@ -126,7 +126,7 @@ PROJECTS = [
             "系统部署 — 配置 Linux 服务器 + Nginx，使用 Git 进行版本管理",
         ],
         "github_url": "https://github.com/ZYlow1/django-blog",
-        "demo_url": "https://zygeli.cn",
+        "demo_url": "https://zygeli.cn/blog/",
         "category": "Web Project",
     },
     {

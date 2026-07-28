@@ -10,6 +10,8 @@ def home(request):
     return render(request, "home.html", {
         "personal": PERSONAL,
         "tech_tags": TECH_TAGS,
+        "projects": PROJECTS,
+        "competitions_count": len(COMPETITIONS),
         "active": "home",
     })
 

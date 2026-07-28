@@ -4,43 +4,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ personal.name }} | {{ personal.title }}</title>
+    <title>张以勒 | 项目展示与技术记录</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        .navbar {
+            animation: navSlideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .main-content {
+            animation: pageEnter 0.6s ease both;
+            will-change: opacity, transform;
+        }
+        .main-content.exiting {
+            animation: pageExit 0.35s ease forwards;
+        }
+        @keyframes pageEnter {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pageExit {
+            from { opacity: 1; transform: translateY(0); }
+            to   { opacity: 0; transform: translateY(-8px); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .navbar { animation: none; }
+            .main-content { animation: none; }
+        }
+    </style>
 </head>
 <body>
-    <!-- 导航栏 -->
+    <!-- 导航栏（仅菜单按钮） -->
     <nav class="navbar">
-        <div class="container nav-container">
-            <ul class="nav-links">
-                <li><a href="/" class="{% if active == 'home' %}active{% endif %}">Home</a></li>
-                <li><a href="/about" class="{% if active == 'about' %}active{% endif %}">About</a></li>
-                <li><a href="/skills" class="{% if active == 'skills' %}active{% endif %}">Skills</a></li>
-                <li><a href="/projects" class="{% if active == 'projects' %}active{% endif %}">Projects</a></li>
-                <li><a href="/competitions" class="{% if active == 'competitions' %}active{% endif %}">Competitions</a></li>
-                <li><a href="/resume" class="{% if active == 'resume' %}active{% endif %}">Resume</a></li>
-                <li><a href="/contact" class="{% if active == 'contact' %}active{% endif %}">Contact</a></li>
-            </ul>
-            <button class="menu-toggle" aria-label="菜单">☰</button>
+        <div class="nav-container">
+            <button class="menu-toggle" aria-label="菜单">
+                <span class="menu-icon">
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                    <span class="menu-line"></span>
+                </span>
+                <span class="menu-label">Menu</span>
+            </button>
         </div>
     </nav>
+
+    <!-- 展开菜单 -->
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="menu-panel">
+            <div class="menu-header">
+                <span class="menu-header-label">Navigation</span>
+                <span class="menu-close" id="menuClose">✕</span>
+            </div>
+            <ul class="menu-links">
+                <li><a href="/" class="menu-link {% if active == 'home' %}active{% endif %}">Home</a></li>
+                <li><a href="/about" class="menu-link {% if active == 'about' %}active{% endif %}">About</a></li>
+                <li><a href="/projects" class="menu-link {% if active == 'projects' %}active{% endif %}">Projects</a></li>
+                <li><a href="/skills" class="menu-link {% if active == 'skills' %}active{% endif %}">Skills</a></li>
+                <li><a href="/competitions" class="menu-link {% if active == 'competitions' %}active{% endif %}">Competitions</a></li>
+                <li><a href="/resume" class="menu-link {% if active == 'resume' %}active{% endif %}">Resume</a></li>
+                <li><a href="/contact" class="menu-link {% if active == 'contact' %}active{% endif %}">Contact</a></li>
+            </ul>
+            <div class="menu-footer">
+                <span class="menu-email">18957760819@163.com</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 背景装饰 -->
+    <div class="page-bg"></div>
+    <div class="code-lines" aria-hidden="true">
+        <span class="code-line" style="top:12%; left:5%; --co:0.12;">from django.apps import AppConfig</span>
+        <span class="code-line" style="top:20%; right:8%; --co:0.08;">class SkillsConfig(AppConfig):</span>
+        <span class="code-line" style="top:35%; left:3%; --co:0.15;">&nbsp;&nbsp;&nbsp;&nbsp;default_auto_field = 'django.db'</span>
+        <span class="code-line" style="top:45%; right:5%; --co:0.10;">SELECT * FROM projects</span>
+        <span class="code-line" style="top:55%; left:8%; --co:0.08;">pip install django pillow</span>
+        <span class="code-line" style="top:65%; right:10%; --co:0.12;">docker compose up -d</span>
+        <span class="code-line" style="top:78%; left:6%; --co:0.09;">git push origin main</span>
+        <span class="code-line" style="top:88%; right:12%; --co:0.06;">python manage.py runserver</span>
+    </div>
 
     <!-- 页面内容 -->
     <main class="main-content">
         {% block content %}{% endblock %}
     </main>
 
+    <!-- 散落的代码装饰（可见独立元素） -->
+    <div class="scattered-code" aria-hidden="true">
+        <span class="sc-code" style="top:6%; right:12%; animation-delay:0s;">import { developer } from 'portfolio'</span>
+        <span class="sc-code" style="top:14%; left:8%; animation-delay:0.8s;">const skills = ['Python', 'Django', 'AI']</span>
+        <span class="sc-code" style="top:25%; right:5%; animation-delay:1.6s;">function buildProject() {</span>
+        <span class="sc-code" style="top:36%; left:18%; animation-delay:2.4s;">&nbsp;&nbsp;&nbsp;&nbsp;return new Website()</span>
+        <span class="sc-code" style="top:46%; right:15%; animation-delay:3.2s;">}</span>
+        <span class="sc-code" style="top:55%; left:4%; animation-delay:4.0s;"># server.py</span>
+        <span class="sc-code" style="top:68%; right:7%; animation-delay:4.8s;">@app.route('/api')</span>
+        <span class="sc-code" style="top:78%; left:10%; animation-delay:5.6s;">def hello_world():</span>
+        <span class="sc-code" style="top:90%; right:4%; animation-delay:6.4s;">&nbsp;&nbsp;&nbsp;&nbsp;return jsonify(data)</span>
+    </div>
+
     <!-- 页脚 -->
+    {% block footer %}
     <footer class="footer">
         <div class="container">
             <p>&copy; {{ personal.name }} | Built with Python &amp; Django</p>
+            <p style="margin-top:6px;font-size:0.8rem">
+                <a href="https://beian.miit.gov.cn/" target="_blank" style="color:var(--text-muted);text-decoration:none">
+                    浙ICP备2025146025号
+                </a>
+            </p>
         </div>
     </footer>
+    {% endblock %}
 
     <script>
-        // 移动端菜单切换
         document.querySelector('.menu-toggle')?.addEventListener('click', function() {
-            document.querySelector('.nav-links')?.classList.toggle('show');
+            document.getElementById('menuOverlay')?.classList.add('open');
         });
+        document.querySelector('.menu-close')?.addEventListener('click', function() {
+            document.getElementById('menuOverlay')?.classList.remove('open');
+        });
+        document.getElementById('menuOverlay')?.addEventListener('click', function(e) {
+            if (e.target === this) this.classList.remove('open');
+        });
+
+        // 页面切换过渡：拦截站内导航，先退出再跳转
+        var navigateTo = function(href) {
+            var main = document.querySelector('.main-content');
+            if (!main) { location.href = href; return; }
+            var go = function() { location.href = href; };
+            main.addEventListener('animationend', function handler() {
+                main.removeEventListener('animationend', handler);
+                go();
+            });
+            main.classList.add('exiting');
+        };
+
+        document.addEventListener('click', function(e) {
+            var link = e.target.closest('a');
+            if (!link) return;
+            if (link.target === '_blank') return;
+            if (link.getAttribute('data-no-transition') !== null) return;
+            if (link.hostname !== location.hostname) return;
+            if (!link.pathname || link.pathname === location.pathname) return;
+
+            e.preventDefault();
+            navigateTo(link.href);
+        });
+
+        // 滚到底部/顶部自动跳转
+        var pagePrev = {
+            '/about/':   '/',
+            '/projects/':'/about/',
+            '/skills/':  '/projects/',
+            '/competitions/': '/skills/',
+            '/resume/':  '/competitions/',
+            '/contact/': '/resume/'
+        };
+        var pageNext = {
+            '/':         '/about/',
+            '/about/':   '/projects/',
+            '/projects/':'/skills/',
+            '/skills/':  '/competitions/',
+            '/competitions/': '/resume/',
+            '/resume/':  '/contact/'
+        };
+
+        var prevPage = pagePrev[location.pathname];
+        var nextPage = pageNext[location.pathname];
+        if (prevPage || nextPage) {
+            var bottomTimer = null, topTimer = null;
+            var threshold = 60;
+
+            // 跨页面冷却：距上次滑动手势跳转 30 秒内不触发
+            var lastScrollNav = parseInt(sessionStorage.getItem('_lastScrollNav') || '0', 10);
+            var now = Date.now();
+            var scrollCooldown = (now - lastScrollNav) < 15000;
+            if (scrollCooldown) {
+                setTimeout(function() { scrollCooldown = false; }, 15000 - (now - lastScrollNav));
+            }
+
+            window.addEventListener('scroll', function() {
+                if (scrollCooldown) return;
+                var top = window.scrollY;
+                var bottom = document.documentElement.scrollHeight - window.innerHeight - top;
+
+                // 滚到底部 → 下一页
+                if (nextPage && bottom < threshold && !window._justArrived) {
+                    if (!bottomTimer) {
+                        bottomTimer = setTimeout(function() {
+                            sessionStorage.setItem('_lastScrollNav', Date.now());
+                            navigateTo(nextPage);
+                        }, 200);
+                    }
+                } else {
+                    clearTimeout(bottomTimer); bottomTimer = null;
+                }
+
+                // 滚到顶部 → 上一页（进入时定位到底部）
+                if (prevPage && top < threshold) {
+                    if (!topTimer) {
+                        topTimer = setTimeout(function() {
+                            sessionStorage.setItem('_lastScrollNav', Date.now());
+                            sessionStorage.setItem('scrollToBottom', '1');
+                            navigateTo(prevPage);
+                        }, 200);
+                    }
+                } else {
+                    clearTimeout(topTimer); topTimer = null;
+                }
+            });
+        }
+
+        // 从上一页跳过来时滚动到底部
+        if (sessionStorage.getItem('scrollToBottom') === '1') {
+            sessionStorage.removeItem('scrollToBottom');
+            window.addEventListener('load', function() {
+                window.scrollTo(0, document.documentElement.scrollHeight);
+                window._justArrived = true;
+                setTimeout(function() { window._justArrived = false; }, 600);
+            });
+        }
     </script>
     {% block scripts %}{% endblock %}
 </body>

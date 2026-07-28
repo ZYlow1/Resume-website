@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-23T00:00:00Z",
+  "title": "Design System: Yile Zhang | Python Developer Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Electric Violet", "canonical": "oklch(52% 0.22 295)", "tonalRamp": ["oklch(28% 0.18 295)", "oklch(34% 0.2 295)", "oklch(40% 0.21 295)", "oklch(46% 0.22 295)", "oklch(52% 0.22 295)", "oklch(60% 0.2 295)", "oklch(70% 0.16 295)", "oklch(82% 0.1 295)"] },
+      "primary-hover": { "role": "primary", "displayName": "Deep Violet", "canonical": "oklch(46% 0.22 295)", "tonalRamp": [] },
+      "neutral-bg": { "role": "neutral", "displayName": "Warm Paper", "canonical": "oklch(94% 0.01 75)", "tonalRamp": ["oklch(50% 0.005 75)", "oklch(60% 0.005 75)", "oklch(70% 0.005 75)", "oklch(78% 0.008 75)", "oklch(85% 0.008 75)", "oklch(90% 0.01 75)", "oklch(94% 0.01 75)", "oklch(97% 0.005 75)"] },
+      "neutral-surface": { "role": "neutral", "displayName": "Warm Surface", "canonical": "oklch(91% 0.01 75)", "tonalRamp": [] },
+      "neutral-card": { "role": "neutral", "displayName": "Pure White", "canonical": "oklch(100% 0 0)", "tonalRamp": [] },
+      "neutral-text": { "role": "neutral", "displayName": "Ink Black", "canonical": "oklch(16% 0.01 285)", "tonalRamp": [] },
+      "neutral-text-secondary": { "role": "neutral", "displayName": "Warm Gray", "canonical": "oklch(42% 0.01 295)", "tonalRamp": [] },
+      "neutral-text-muted": { "role": "neutral", "displayName": "Muted Gray", "canonical": "oklch(48% 0.01 295)", "tonalRamp": [] },
+      "neutral-border": { "role": "neutral", "displayName": "Warm Border", "canonical": "oklch(86% 0.01 75)", "tonalRamp": [] },
+      "success": { "role": "semantic", "displayName": "Emerald", "canonical": "oklch(55% 0.17 155)", "tonalRamp": [] },
+      "warning": { "role": "semantic", "displayName": "Amber", "canonical": "oklch(68% 0.16 75)", "tonalRamp": [] },
+      "danger": { "role": "semantic", "displayName": "Red", "canonical": "oklch(55% 0.2 25)", "tonalRamp": [] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero 标题和页面主标题" },
+      "title": { "displayName": "Title", "purpose": "卡片标题、次级标题" },
+      "body": { "displayName": "Body", "purpose": "正文段落、页面说明" },
+      "label": { "displayName": "Label", "purpose": "导航链接、标签、按钮" },
+      "mono": { "displayName": "Mono", "purpose": "终端窗口内容" }
+    },
+    "shadows": [
+      { "name": "terminal-soft", "value": "0 8px 32px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04)", "purpose": "终端窗口的柔和阴影" },
+      { "name": "hover-lift", "value": "0 12px 40px rgba(0, 0, 0, 0.08)", "purpose": "卡片/按钮悬浮态的上浮反馈" }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "ease", "purpose": "所有状态转换的默认缓动 (0.2s)" },
+      { "name": "ease-blinking", "value": "step-end 1s infinite", "purpose": "终端光标的闪烁动画" }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "CTA 按钮，用于 Hero 的\"查看项目\"等主要行动点",
+      "html": "<a href=\"/projects\" class=\"ds-btn-primary\">查看项目 →</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: #38bdf8; color: #0f172a; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; border: none; font-family: inherit; text-decoration: none; transition: all 0.2s ease; } .ds-btn-primary:hover { background: #7dd3fc; transform: translateY(-1px); }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "次要按钮，用于\"下载简历\"等次要行动点",
+      "html": "<a href=\"/resume\" class=\"ds-btn-outline\">下载简历</a>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: transparent; color: #ffffff; border-radius: 8px; font-size: 0.95rem; font-weight: 600; cursor: pointer; border: 1px solid #334155; font-family: inherit; text-decoration: none; transition: all 0.2s ease; } .ds-btn-outline:hover { border-color: #38bdf8; color: #38bdf8; transform: translateY(-1px); }"
+    },
+    {
+      "name": "Project Card",
+      "kind": "card",
+      "refersTo": "card-default",
+      "description": "项目展示卡片，带标签、摘要和链接",
+      "html": "<div class=\"ds-card-project\"><div class=\"ds-card-project-category\">Web Project</div><h3>Django个人博客平台</h3><div class=\"ds-card-project-tags\"><span class=\"ds-tag\">Python</span><span class=\"ds-tag\">Django</span><span class=\"ds-tag\">MySQL</span></div><p class=\"ds-card-project-summary\">一个基于 Django 5.2 框架开发的现代化个人博客系统。</p><div class=\"ds-card-project-links\"><a href=\"#\">查看详情 →</a><a href=\"#\">GitHub →</a></div></div>",
+      "css": ".ds-card-project { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 24px; transition: all 0.2s ease; display: flex; flex-direction: column; } .ds-card-project:hover { border-color: #38bdf8; transform: translateY(-2px); box-shadow: 0 4px 20px rgba(56, 189, 248, 0.1); } .ds-card-project-category { display: inline-block; font-size: 0.8rem; color: #38bdf8; margin-bottom: 12px; } .ds-card-project h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; } .ds-card-project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; } .ds-tag { padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; background: #1e293b; border: 1px solid #334155; color: #94a3b8; transition: all 0.2s; } .ds-tag:hover { border-color: #38bdf8; color: #38bdf8; } .ds-card-project-summary { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px; flex: 1; } .ds-card-project-links { display: flex; gap: 12px; margin-top: auto; } .ds-card-project-links a { font-size: 0.85rem; color: #38bdf8; font-weight: 500; text-decoration: none; } .ds-card-project-links a:hover { color: #7dd3fc; }"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "主导航链接",
+      "html": "<nav class=\"ds-nav\"><a href=\"/\" class=\"ds-nav-link active\">Home</a><a href=\"/about\" class=\"ds-nav-link\">About</a><a href=\"/projects\" class=\"ds-nav-link\">Projects</a><a href=\"/contact\" class=\"ds-nav-link\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; list-style: none; gap: 12px; } .ds-nav-link { padding: 8px 14px; border-radius: 8px; color: #94a3b8; font-size: 1rem; font-weight: 500; text-decoration: none; transition: all 0.2s ease; } .ds-nav-link:hover { color: #ffffff; background: #1e293b; } .ds-nav-link.active { color: #38bdf8; background: rgba(56, 189, 248, 0.1); }"
+    },
+    {
+      "name": "Tag / Chip",
+      "kind": "chip",
+      "refersTo": "tag-chip",
+      "description": "技术标签和过滤芯片",
+      "html": "<span class=\"ds-tag-lg\">Python</span><span class=\"ds-tag-lg\">Django</span><span class=\"ds-tag-lg\">AI</span>",
+      "css": ".ds-tag-lg { display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; background: #1e293b; border: 1px solid #334155; color: #94a3b8; transition: all 0.2s ease; } .ds-tag-lg:hover { border-color: #38bdf8; color: #38bdf8; transform: translateY(-1px); }"
+    },
+    {
+      "name": "Competition Card",
+      "kind": "card",
+      "refersTo": "card-competition",
+      "description": "竞赛荣誉展示卡片，含奖项标签和技能标签",
+      "html": "<div class=\"ds-card-competition\"><span class=\"ds-badge-award\">省赛二等奖</span><h3>全国大学生数学建模竞赛</h3><p class=\"ds-card-competition-subtitle\">高职高专</p><div class=\"ds-card-competition-skills\"><span>数学建模</span><span>数据分析</span></div></div>",
+      "css": ".ds-card-competition { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 28px; transition: all 0.2s ease; } .ds-card-competition:hover { border-color: #38bdf8; transform: translateY(-2px); } .ds-badge-award { display: inline-block; padding: 4px 12px; background: rgba(234, 179, 8, 0.15); color: #eab308; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-bottom: 12px; } .ds-card-competition h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 4px; } .ds-card-competition-subtitle { color: #94a3b8; font-size: 0.9rem; margin-bottom: 12px; } .ds-card-competition-skills { display: flex; flex-wrap: wrap; gap: 6px; } .ds-card-competition-skills span { padding: 4px 10px; background: #1e293b; border-radius: 16px; font-size: 0.8rem; border: 1px solid #334155; color: #64748b; }"
+    },
+    {
+      "name": "Contact Card",
+      "kind": "card",
+      "refersTo": "card-contact",
+      "description": "联系方式条目卡片",
+      "html": "<div class=\"ds-card-contact\"><div class=\"ds-card-contact-icon\">✉</div><div><span class=\"ds-card-contact-label\">Email</span><span class=\"ds-card-contact-value\">user@example.com</span></div></div>",
+      "css": ".ds-card-contact { display: flex; align-items: center; gap: 16px; padding: 16px 32px; background: #1e293b; border: 1px solid #334155; border-radius: 8px; transition: all 0.2s ease; min-width: 320px; max-width: 420px; width: 100%; } .ds-card-contact:hover { border-color: #38bdf8; transform: translateY(-1px); } .ds-card-contact-icon { font-size: 1.5rem; width: 40px; text-align: center; flex-shrink: 0; } .ds-card-contact-label { font-size: 0.8rem; color: #64748b; display: block; } .ds-card-contact-value { font-size: 0.9rem; font-weight: 500; display: block; color: #ffffff; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Code Narrative",
+    "overview": "代码叙事。这个设计系统讲述的是一个人的技术成长故事——以开发者自己的工具和语言。暗色终端是叙事的载体，天蓝强调色是对话中的声音。每一个页面都是一次 cat 或 ls 操作，把项目、竞赛、技能以最直接的方式呈现给读者。\n\nVisual Atmosphere: 冷静 · 专注 · 技术感。深色背景建立沉浸感，Sky Blue 强调色像终端中的高亮输出，克制而清晰。不追求炫目的视觉效果，而是营造一个让招聘者专注内容本身的阅读环境。",
+    "keyCharacteristics": [
+      "终端窗口是标志性组件，锚定开发者身份",
+      "深色背景 + 单一蓝色强调色的极简 palette",
+      "边框和背景层次代替阴影来分隔内容区域",
+      "动效服务于反馈（hover 状态变化），不用于装饰",
+      "字体栈融合了系统 sans-serif 的可读性和 monospace 的技术感"
+    ],
+    "rules": [
+      { "name": "The One-Voice Rule", "body": "Sky Blue 是唯一的强调色。任何页面不应出现第二种强调色。颜色层级完全通过同色系的明度和饱和度变化来实现。", "section": "colors" },
+      { "name": "The Terminal-Honesty Rule", "body": "终端窗口的颜色（Terminal Black、红/黄/绿圆点）必须保持与真实终端一致，不做创意化改造。它们是身份锚点，不是装饰元素。", "section": "colors" },
+      { "name": "The One-Stack Rule", "body": "不分显示字体和正文字体。整个系统使用同一套字体栈，层次完全通过权重（700/600/500/400）、字号和间距实现。", "section": "typography" },
+      { "name": "The Flat-by-Default Rule", "body": "表面静止时无阴影。边框和背景层级是默认的分隔手段。阴影只在交互态出现。", "section": "elevation" }
+    ],
+    "dos": [
+      "用 Sky Blue 单一强调色系统，保持 ≤10% 页面色块占比",
+      "用背景色层级 (Deep Navy → Slate Surface) 来区分内容区域",
+      "保证正文对比度 ≥4.5:1，大号文字 ≥3:1",
+      "在 hover 时给交互元素提供明确的触感反馈（上浮 + 边框变色）",
+      "在终端窗口中使用纯 monospace 字体，与系统 UI 区隔",
+      "让项目和竞赛卡片承载最大的视觉重量",
+      "使用 text-wrap: balance 在 h1–h3 上，text-wrap: pretty 在长段落上"
+    ],
+    "donts": [
+      "使用第二种强调色。整个系统只有 Sky Blue",
+      "使用大范围投影作为默认分隔手段。平面 + 边框优先",
+      "使用渐变文字（background-clip: text + gradient）",
+      "使用玻璃拟态（glassmorphism）作为默认样式",
+      "使用 SaaS 指标块布局（大数字 + 小标签 + 装饰性强调）",
+      "使用编号章节标记（01 / 02 / 03）作为默认页面结构",
+      "使用全大写 + 宽间距的 eyebrow 标题（\"ABOUT\" \"PROCESS\"）",
+      "使用 border-left 或 border-right 大于 1px 作为彩色装饰条",
+      "把竞赛荣誉放在简历角落——它们有独立的卡片展示",
+      "让文字溢出容器——测试每个断点的长标题"
+    ]
+  }
+}
