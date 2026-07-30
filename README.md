@@ -46,4 +46,4 @@ python manage.py runserver
 
 ## 许可证
 
-GPL
+本项目基于 [GNU General Public License v3.0](LICENSE) 发布。

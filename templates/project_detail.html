@@ -13,13 +13,11 @@
             {% endfor %}
         </div>
 
-        <!-- 项目介绍 -->
         <div class="detail-section">
             <h2>项目介绍</h2>
             <p>{{ project.summary }}</p>
         </div>
 
-        <!-- 功能列表 -->
         <div class="detail-section">
             <h2>功能</h2>
             <ul class="detail-features">
@@ -29,13 +27,12 @@
             </ul>
         </div>
 
-        <!-- 技术架构 -->
         <div class="detail-section">
             <h2>技术架构</h2>
             <div class="arch-diagram">
                 {% for layer_name, layer_value in project.architecture.items %}
                 <div class="arch-layer">
-                    <span class="label">{{ layer_name|title }}</span>
+                    <span class="label">{{ layer_name }}</span>
                     <span class="value">{{ layer_value }}</span>
                 </div>
                 {% if not loop.last %}
@@ -45,7 +42,6 @@
             </div>
         </div>
 
-        <!-- 我的工作 -->
         <div class="detail-section">
             <h2>我的工作</h2>
             <ul class="detail-work">
@@ -55,7 +51,6 @@
             </ul>
         </div>
 
-        <!-- 展示按钮 -->
         <div class="detail-buttons">
             <a href="{{ project.github_url }}" target="_blank" class="btn btn-outline">GitHub →</a>
             {% if project.demo_url %}
